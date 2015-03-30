@@ -3,6 +3,7 @@
 using namespace std;
 
 void insertionsort(int data[], signed int size) {
+	cout << "Length: " << size << endl; // DEBUGG
 	if (size < 2) return;
 
 	for (int i = 1; i < size; i++) {

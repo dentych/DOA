@@ -4,7 +4,7 @@
 
 template<class T>
 void quicksort2(T data[], int first, int last, unsigned int bc) {
-	if (last-first  bc) {
+	if (first+bc > last) {
 		// DEBUG
 		cout << "Starting insertionsort. Current array: " << endl;
 		for (int i = 0; i < 100; i++) {
@@ -40,9 +40,9 @@ void quicksort2(T data[], const int n, unsigned int bc) {
 	int i, max;
 	if (n < 2)
 		return;
-	for (i = 1, max = 0; i < n; i++)// find the largest
-		if (data[max] < data[i])    // element and put it
-			max = i;                // at the end of data[];
-	swap(data[n - 1], data[max]); // largest el is now in its
+	for (i = 1, max = 0; i < n; i++)	// find the largest
+		if (data[max] < data[i])		// element and put it
+			max = i;					// at the end of data[];
+	swap(data[n - 1], data[max]);		// largest el is now in its
 	quicksort2(data, 0, n - 2, bc);     // final position;
 }

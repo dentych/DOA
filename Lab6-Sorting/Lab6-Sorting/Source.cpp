@@ -19,6 +19,7 @@ int main() {
 	cout << endl << endl;
 
 	quicksort2(arr, SIZE, 20);
+	//insertionsort(arr, SIZE);
 
 	for (int i = 0; i < SIZE; i++) {
 		cout << arr[i] << endl;
