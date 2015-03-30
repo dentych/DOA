@@ -4,7 +4,7 @@
 
 template<class T>
 void quicksort2(T data[], int first, int last, unsigned int bc) {
-	if (last-first <= bc) {
+	if (last-first  bc) {
 		// DEBUG
 		cout << "Starting insertionsort. Current array: " << endl;
 		for (int i = 0; i < 100; i++) {
