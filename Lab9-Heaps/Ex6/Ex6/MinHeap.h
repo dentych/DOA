@@ -11,7 +11,10 @@ class MinHeap
 {
 public:
 
-	void insert(T x);
+	void insert(T x) {
+		heap.push_back(x);
+		percolateUp(heap.size() - 1);
+	}
 
 	void remove();
 
@@ -19,7 +22,7 @@ public:
 		if (isEmpty()) return NULL
 		else return heap.front();
 	}
-	
+
 	bool isEmpty();
 
 	// PRE	: -
@@ -27,7 +30,7 @@ public:
 	//		  Otherwise, false is returned
 	bool isHeap() const
 	{
-		for (size_t i = 0; i< (heap.size() - 1) / 2; i++)
+		for (size_t i = 0; i < (heap.size() - 1) / 2; i++)
 		{
 			if (smallest(i) != i) return false;
 		}
@@ -38,7 +41,9 @@ private:
 	// Attributes
 	vector<T> heap;
 
-	void percolateUp(size_t i);
+	void percolateUp(size_t i) {
+		if ()
+	}
 
 	void percolateDown(size_t i);
 
@@ -48,13 +53,13 @@ private:
 	{
 		size_t small = i;
 
-		if (left(i)  < heap.size() &&
-			heap[i]> heap[left(i)])
+		if (left(i) < heap.size() &&
+			heap[i] > heap[left(i)])
 			small = left(i);
 
 		if (right(i) < heap.size() &&
-			heap[i]> heap[right(i)] &&
-			heap[right(i)]< heap[left(i)])
+			heap[i] > heap[right(i)] &&
+			heap[right(i)] < heap[left(i)])
 			small = right(i);
 
 		return small;
@@ -68,6 +73,8 @@ private:
 		heap[x] = heap[y];
 		heap[y] = temp;
 	}
+
+	size_t parent(size_t i);
 
 	size_t left(size_t i);
 
