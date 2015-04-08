@@ -1,0 +1,1 @@
+Insert(2) starter med at sætte ind på første plads (og husker at opfylde shape property, dvs. der fyldes op fra bunden, højre mod venstre). 2 Bliver altså sat ind på venstre barn af 32. Derefter udføres en perculate-up (2 gange), først 2<->32, dernæst 2<->7. Done! :D
