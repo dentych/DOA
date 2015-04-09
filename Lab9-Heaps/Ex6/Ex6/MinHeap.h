@@ -11,12 +11,34 @@ template<typename Item>
 class MinHeap
 {
 public:
-	
+	// Default constructor
+	MinHeap(int debug = 0) {
+		if (debug > 0) {
+			cout << "Creating minimum heap with default constructor!" << endl;
+			debugLevel = debug;
+		}
+	}
+
+	// Constructor that takes a vector as parameter.
+	// The constructor will generate a heap from the vector array.
+	MinHeap(vector<Item> & vec, int debug = 0) {
+		for (int i = 0; i < vec.size(); i++) {
+			insert(vec.at(i));
+		}
+		if (debug > 0) {
+			cout << "Creating minimum heap from a vector array!" << endl;
+			debugLevel = debug;
+		}
+	}
+
 	// Insert the element into the heap.
 	void insert(Item x) {
 		heap.push_back(x);
 		if (heap.size() > 1) {
 			percolateUp(heap.size() - 1);
+		}
+		if (debugLevel > 0) {
+			cout << "Inserted value " << x << endl;
 		}
 	}
 
@@ -32,6 +54,14 @@ public:
 
 			// Percolate down the root.
 			percolateDown(0);
+			if (debugLevel > 0) {
+				cout << "Removed root element from heap." << endl;
+			}
+		}
+		else {
+			if (debugLevel > 0) {
+				cout << "Tried to remove root element, but heap is empty." << endl;
+			}
 		}
 	}
 
@@ -39,6 +69,10 @@ public:
 	Item peek() {
 		if (isEmpty()) return NULL
 		else return heap.front();
+
+		if (debugLevel > 0) {
+			cout << "Peeking!" << endl;
+		}
 	}
 
 	// Check if the heap is empty.
@@ -75,9 +109,13 @@ public:
 private:
 	// Attributes
 	vector<Item> heap;
+	int debugLevel;
 
 	// Methods
 	void percolateUp(size_t i) {
+		if (debugLevel > 0) {
+			cout << "Percolating up. Index: " << i << endl;
+		}
 		if (heap.at(i) < heap.at(parent(i))) {
 			swap(i, parent(i));
 			percolateUp(parent(i));
@@ -85,6 +123,9 @@ private:
 	}
 
 	void percolateDown(size_t i) {
+		if (debugLevel > 0) {
+			cout << "Percolating down. Index: " << i << endl;
+		}
 		// Find index of smallest child
 		size_t smallestChild = (heap.at(left(i)) <= heap.at(right(i)) ? left(i) : right(i));
 

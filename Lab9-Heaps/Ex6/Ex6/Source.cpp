@@ -23,4 +23,16 @@ int main() {
 
 	cout << "Is it a heap? " << (heap.isHeap() ? "true" : "false") << endl;
 	heap.print();
+
+	cout << endl << endl << "Test af MinHeap constructor!" << endl;
+
+	vector<int> vec;
+	for (int i = 0; i < 10; i++) {
+		vec.push_back(rand() % 100);
+		cout << "Added: " << vec.back() << endl;
+	}
+
+	MinHeap<int> heap2(vec);
+
+	heap2.print();
 }
