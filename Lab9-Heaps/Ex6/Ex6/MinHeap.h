@@ -6,19 +6,19 @@ using namespace std;
 //==================================================
 // CLASS MinHeap
 //==================================================
-template<typename T>
+template<typename Item>
 class MinHeap
 {
 public:
 
-	void insert(T x) {
+	void insert(Item x) {
 		heap.push_back(x);
 		percolateUp(heap.size() - 1);
 	}
 
 	void remove();
 
-	T peek() {
+	Item peek() {
 		if (isEmpty()) return NULL
 		else return heap.front();
 	}
@@ -39,7 +39,7 @@ public:
 
 private:
 	// Attributes
-	vector<T> heap;
+	vector<Item> heap;
 
 	void percolateUp(size_t i) {
 		if ()
@@ -74,9 +74,23 @@ private:
 		heap[y] = temp;
 	}
 
-	size_t parent(size_t i);
+	size_t parent(size_t i) {
+		// Check if it's right child or left child.
+		// i % 2 = 0 means it's the right child.
+		// i % 2 != 0 means it's the left child.
+		if (i % 2) {
+			return (i - 2) / 2;
+		}
+		else {
+			return (i - 1) / 2;
+		}
+	}
 
-	size_t left(size_t i);
+	size_t left(size_t i) {
+		return 2 * i + 1;
+	}
 
-	size_t right(size_t i);
+	size_t right(size_t i) {
+		return 2 * i + 2;
+	}
 };
