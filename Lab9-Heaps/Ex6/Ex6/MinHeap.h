@@ -44,7 +44,7 @@ public:
 	// PRE	: -
 	// POST	: If the heap is a true heap, true is returned. 
 	//		  Otherwise, false is returned
-	bool isHeap() const
+	bool isHeap()
 	{
 		for (size_t i = 0; i < (heap.size() - 1) / 2; i++)
 		{
@@ -88,7 +88,7 @@ private:
 
 	// PRE	: 0 <= i < heap.size()
 	// POST	: Returns the index of the smallest of element i and its two children
-	size_t smallest(size_t i) const	// returns index of smallest of i and its parents
+	size_t smallest(size_t i)// returns index of smallest of i and its parents
 	{
 		size_t small = i;
 
