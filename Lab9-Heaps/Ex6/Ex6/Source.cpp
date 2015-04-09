@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include "MinHeap.h"
 
 using namespace std;
@@ -6,14 +8,12 @@ using namespace std;
 int main() {
 	/* Test of minHeap! */
 	MinHeap<int> heap;
+	srand(time(NULL));
 
-	heap.insert(5);
-	heap.insert(10);
-	heap.insert(50);
-	heap.insert(34);
-	heap.insert(22);
-	heap.insert(17);
-	heap.insert(47);
+	for (int i = 0; i < 30; i++) {
+		heap.insert(rand() % 100);
+	}
 
+	cout << "Is it a heap? " << (heap.isHeap() ? "true" : "false") << endl;
 	heap.print();
 }

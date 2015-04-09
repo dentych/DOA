@@ -78,7 +78,7 @@ private:
 
 	void percolateDown(size_t i) {
 		// Find index of smallest child
-		size_t smallestChild = (heap.at(left(i)) < heap.at(right(i)) ? left(i) : right(i));
+		size_t smallestChild = (heap.at(left(i)) <= heap.at(right(i)) ? left(i) : right(i));
 
 		if (heap.at(i) > heap.at(smallestChild)) {
 			swap(i, smallestChild);
