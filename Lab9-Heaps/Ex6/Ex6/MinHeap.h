@@ -35,7 +35,9 @@ public:
 		else return heap.front();
 	}
 
-	bool isEmpty();
+	bool isEmpty() {
+		return heap.empty();
+	}
 
 	// PRE	: -
 	// POST	: If the heap is a true heap, true is returned. 
@@ -53,11 +55,23 @@ private:
 	// Attributes
 	vector<Item> heap;
 
+	// Methods
 	void percolateUp(size_t i) {
-		if ()
+		if (heap.at(i) < heap.at(parent(i))) {
+			swap(i, parent(i));
+			percolateUp(parent(i));
+		}
 	}
 
-	void percolateDown(size_t i);
+	void percolateDown(size_t i) {
+		// Find index of smallest child
+		size_t smallestChild = (heap.at(left(i)) < heap.at(right(i)) ? left(i) : right(i));
+
+		if (heap.at(i) > heap.at(smallestChild)) {
+			swap(i, smallestChild);
+			percolateDown(smallestChild);
+		}
+	}
 
 	// PRE	: 0 <= i < heap.size()
 	// POST	: Returns the index of the smallest of element i and its two children
