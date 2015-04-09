@@ -95,7 +95,7 @@ private:
 	// POST	: Elements with indices x and y are swapped
 	void swap(size_t x, size_t y)
 	{
-		T temp = heap[x];
+		Item temp = heap[x];
 		heap[x] = heap[y];
 		heap[y] = temp;
 	}
