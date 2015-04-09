@@ -13,7 +13,9 @@ public:
 
 	void insert(Item x) {
 		heap.push_back(x);
-		percolateUp(heap.size() - 1);
+		if (heap.size() > 1) {
+			percolateUp(heap.size() - 1);
+		}
 	}
 
 	void remove() {
@@ -35,7 +37,7 @@ public:
 		else return heap.front();
 	}
 
-	bool isEmpty() {
+	bool isEmpty() const {
 		return heap.empty();
 	}
 
@@ -49,6 +51,17 @@ public:
 			if (smallest(i) != i) return false;
 		}
 		return true;
+	}
+
+	void print() const {
+		for (int i = 0; i < heap.size(); i++) {
+			if (i == heap.size() - 1) {
+				cout << heap.at(i) << endl;
+			}
+			else {
+				cout << heap.at(i) << " | ";
+			}
+		}
 	}
 
 private:
@@ -101,22 +114,45 @@ private:
 	}
 
 	size_t parent(size_t i) {
-		// Check if it's right child or left child.
-		// i % 2 = 0 means it's the right child.
-		// i % 2 != 0 means it's the left child.
-		if (i % 2) {
-			return (i - 2) / 2;
+		// Make sure the node actually has a parent
+		if (i > 0) {
+			size_t index = 0;
+			// Check if it's right child or left child.
+			// i % 2 = 0 means it's the right child.
+			// i % 2 > 0 means it's the left child.
+			if (i % 2) {
+				index = (i - 1);
+				index /= 2;
+				return index;
+			}
+			else {
+				index = (i - 2);
+				index /= 2;
+				return index;
+			}
 		}
 		else {
-			return (i - 1) / 2;
+			return 0;
 		}
 	}
 
 	size_t left(size_t i) {
-		return 2 * i + 1;
+		size_t leftIndex = 2 * i + 1;
+		if (leftIndex < heap.size()) {
+			return leftIndex;
+		}
+		else {
+			return i;
+		}
 	}
 
 	size_t right(size_t i) {
-		return 2 * i + 2;
+		size_t rightIndex = 2 * i + 2;
+		if (rightIndex < heap.size()) {
+			return 2 * i + 2;
+		}
+		else {
+			return i;
+		}
 	}
 };
