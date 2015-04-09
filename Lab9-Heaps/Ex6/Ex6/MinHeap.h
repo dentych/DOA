@@ -1,3 +1,4 @@
+#pragma once
 #include<vector>
 #include<iostream>
 
@@ -10,7 +11,8 @@ template<typename Item>
 class MinHeap
 {
 public:
-
+	
+	// Insert the element into the heap.
 	void insert(Item x) {
 		heap.push_back(x);
 		if (heap.size() > 1) {
@@ -18,6 +20,7 @@ public:
 		}
 	}
 
+	// Remove the root element.
 	void remove() {
 		if (!isEmpty() && heap.size() > 1) {
 			// Place last element in the top (ie. remove the current root element).
@@ -32,11 +35,15 @@ public:
 		}
 	}
 
+	// Return root element.
 	Item peek() {
 		if (isEmpty()) return NULL
 		else return heap.front();
 	}
 
+	// Check if the heap is empty.
+	// Returns true if empty
+	// False if the heap contains data.
 	bool isEmpty() const {
 		return heap.empty();
 	}
@@ -53,6 +60,7 @@ public:
 		return true;
 	}
 
+	// Print out the heap array to stdout.
 	void print() const {
 		for (int i = 0; i < heap.size(); i++) {
 			if (i == heap.size() - 1) {
