@@ -16,7 +16,19 @@ public:
 		percolateUp(heap.size() - 1);
 	}
 
-	void remove();
+	void remove() {
+		if (!isEmpty() && heap.size() > 1) {
+			// Place last element in the top (ie. remove the current root element).
+			heap.front() = heap.back();
+
+			// Remove last element, because it is now the root element.
+			vector<int>::iterator it = heap.end();
+			heap.erase(--it);
+
+			// Percolate down the root.
+			percolateDown(0);
+		}
+	}
 
 	Item peek() {
 		if (isEmpty()) return NULL
