@@ -61,16 +61,24 @@ public:
 	* So alco = dijkstra's.
 	*/
 	static void alco(Graph g) {
-		Node v;
-		std::queue<GraphNode<Item>*> q;
+		Node * v;
+		std::queue<Node*> q;
 
 		for (GraphIter it = g.begin(); it != g.end(); ++it) {
 			(*it)->cost = -1;
 		}
 
-		GraphNode<Item> * start = g.front();
+		Node * start = g.front();
 		start->cost = 0;
 		q.push(start);
+
+		while (!q.empty()) {
+			v = q.front();
+			q.pop();
+			for ((v->neighbors)::iterator it = (v->neighbors).begin(); it != (v->neighbors).end(); ++it) {
+				if ((*it)->to->weight > v->cost + (*it)->weight || (*it)->to->cost == -1)
+			}
+		}
 		/*
 		start.cost = 0;
 		q.push(start);
