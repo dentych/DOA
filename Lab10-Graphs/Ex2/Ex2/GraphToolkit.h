@@ -2,6 +2,7 @@
 
 #include"GraphNode.h"
 #include<iostream>
+#include <queue>
 
 using namespace std;
 
@@ -53,6 +54,34 @@ public:
 			}
 			cout << endl;
 		}
+	}
+
+	/*
+	* Yes, this is Dijkstra's, but nobody can spell that shit.
+	* So alco = dijkstra's.
+	*/
+	static void alco(Graph g) {
+		Node v;
+		std::queue<Item> q;
+
+		for (GraphIter it = g.begin(); it != g.end(); ++it) {
+			(*it)->cost = -1;
+		}
+		/*
+		start.cost = 0;
+		q.push(start);
+
+		while (!q.empty()){
+			v = q.front();
+			q.top();
+			for each Node n in v.neighbours{
+				if (n.cost > v.cost + cost(edge(v, n))){
+					n.cost = v.cost + cost(edge(v, n));
+					q.push(n)
+				}
+			}
+		}
+		*/
 	}
 
 };
